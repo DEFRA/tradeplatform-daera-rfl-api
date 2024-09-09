@@ -35,9 +35,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DEFRA.Trade.API.DAERA.RFL.T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DEFRA.Trade.API.DAERA.RFL.Tests", "test\DEFRA.Trade.API.DAERA.RFL.Tests\DEFRA.Trade.API.DAERA.RFL.Tests.csproj", "{A9F5082D-0ECD-434F-BD01-C0338CCD4183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Defra.Trade.Common.Function.Health", "src\Defra.Trade.Common.Function.Health\Defra.Trade.Common.Function.Health.csproj", "{8F2A4202-2230-42CB-B1D8-6962A2EA4F95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Defra.Trade.Common.Function.Health", "src\Defra.Trade.Common.Function.Health\Defra.Trade.Common.Function.Health.csproj", "{8F2A4202-2230-42CB-B1D8-6962A2EA4F95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Defra.Trade.Common.Function.Health.UnitTests", "test\Defra.Trade.Common.Function.Health\Defra.Trade.Common.Function.Health.UnitTests.csproj", "{FACADE1D-30AE-4B9A-BCBB-9E2171A61A93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Defra.Trade.Common.Function.Health.UnitTests", "test\Defra.Trade.Common.Function.Health\Defra.Trade.Common.Function.Health.UnitTests.csproj", "{FACADE1D-30AE-4B9A-BCBB-9E2171A61A93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{17AEC739-0D49-4A7E-A38D-0CFD7A7E7051}"
+	ProjectSection(SolutionItems) = preProject
+		CONTRIBUTING.md = CONTRIBUTING.md
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
