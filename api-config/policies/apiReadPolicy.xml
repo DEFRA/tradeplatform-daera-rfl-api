@@ -1,0 +1,91 @@
+[concat('<policies>
+    <inbound>
+        <base />
+        <set-variable name="Audience" value="', parameters('audience'),'" />
+        <cache-lookup-value key="is-primary-backend-down-cache-key" variable-name="is-primary-backend-down" default-value="@(false)" />
+        <cache-lookup-value key="is-secondary-backend-down-cache-key" variable-name="is-secondary-backend-down" default-value="@(false)" />
+        <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid." require-expiration-time="true" require-scheme="Bearer" require-signed-tokens="true" clock-skew="900" output-token-variable-name="jwt">
+            <openid-config url="', concat('https://login.microsoftonline.com/', subscription().tenantId, '/.well-known/openid-configuration') ,'" />
+            <required-claims>
+                <claim name="aud">
+                    <value>@((string)context.Variables["Audience"])</value>
+                </claim>
+                <claim name="iss">
+                    <value>https://sts.windows.net/', subscription().tenantId, '/</value>
+                </claim>
+                <claim name="tid">
+                    <value>', subscription().tenantId, '</value>
+                </claim>
+                <claim name="roles" match="all">
+                    <value>Trade.DaeraRfl.Read</value>
+                </claim>
+            </required-claims>
+        </validate-jwt>
+        <set-header name="x-api-version" exists-action="override">
+            <value>@(context.Api.Version)</value>
+        </set-header>
+        <set-header name="x-client-id" exists-action="override">
+            <value>@(context.Request.Headers["Authorization"].First().Split('' '')[1].AsJwt()?.Claims.GetValueOrDefault("appid"))</value>
+        </set-header>
+        <choose> 
+            <when condition="@("North Europe".Equals(context.Deployment.Region, StringComparison.OrdinalIgnoreCase) && !((bool)context.Variables["is-primary-backend-down"]))">
+                <set-backend-service base-url="', parameters('trade-daera-rfl-api-v1-serviceUrl') ,'" />
+            </when>
+            <when condition="@("West Europe".Equals(context.Deployment.Region, StringComparison.OrdinalIgnoreCase) && !((bool)context.Variables["is-secondary-backend-down"]))">
+                <set-backend-service base-url="', parameters('secondaryServiceUrl') ,'" />
+            </when>
+            <when condition="@("North Europe".Equals(context.Deployment.Region, StringComparison.OrdinalIgnoreCase) && ((bool)context.Variables["is-primary-backend-down"]))">
+                <set-backend-service base-url="', parameters('secondaryServiceUrl') ,'" />
+            </when>
+            <when condition="@("West Europe".Equals(context.Deployment.Region, StringComparison.OrdinalIgnoreCase) && ((bool)context.Variables["is-secondary-backend-down"]))">
+                <set-backend-service base-url="', parameters('trade-daera-rfl-api-v1-serviceUrl') ,'" />
+            </when>
+            <otherwise>
+                <set-backend-service base-url="', parameters('trade-daera-rfl-api-v1-serviceUrl') ,'" />
+            </otherwise>
+        </choose>
+        
+        <authentication-managed-identity resource="', parameters('aspClientId'), '" ignore-error="false" />
+    </inbound>
+    <backend>
+        <retry condition="@(context.Response.StatusCode == 404 || context.Response.StatusCode == 403)" count="2" interval="1" first-fast-retry="true" >
+            <choose>
+                <when condition="@(context.Response != null && (context.Response.StatusCode == 404 || context.Response.StatusCode == 403))">
+					<set-variable name="PrimaryURL" value="', parameters('trade-daera-rfl-api-v1-serviceUrl') ,'" />
+					<set-variable name="SecondaryURL" value="', parameters('secondaryServiceUrl') ,'" />
+                    <choose>
+                        <when condition="@(context.Request.Url.Host.Equals((new Uri(context.Variables.GetValueOrDefault<string>("PrimaryURL"))).Host, StringComparison.OrdinalIgnoreCase))">
+							<set-backend-service base-url="', parameters('secondaryServiceUrl') ,'" />
+                            <cache-store-value key="is-primary-backend-down-cache-key" value="@(true)" duration="10" />
+                        </when>
+                        <when condition="@(context.Request.Url.Host.Equals((new Uri(context.Variables.GetValueOrDefault<string>("SecondaryURL"))).Host, StringComparison.OrdinalIgnoreCase))">
+							<set-backend-service base-url="', parameters('trade-daera-rfl-api-v1-serviceUrl') ,'" />
+                            <cache-store-value key="is-secondary-backend-down-cache-key" value="@(true)" duration="10" />
+                        </when>
+                    </choose>
+                </when>
+            </choose>
+            <forward-request />
+			<choose>
+				<when condition="@(context.Response != null && (context.Response.StatusCode == 200))">
+					<set-variable name="PrimaryURL" value="', parameters('trade-daera-rfl-api-v1-serviceUrl') ,'" />
+					<set-variable name="SecondaryURL" value="', parameters('secondaryServiceUrl') ,'" />
+					<choose>
+						<when condition="@(context.Request.Url.Host.Equals((new Uri(context.Variables.GetValueOrDefault<string>("PrimaryURL"))).Host, StringComparison.OrdinalIgnoreCase))">
+							<cache-remove-value key="is-primary-backend-down-cache-key" />
+						</when>
+						<when condition="@(context.Request.Url.Host.Equals((new Uri(context.Variables.GetValueOrDefault<string>("SecondaryURL"))).Host, StringComparison.OrdinalIgnoreCase))">
+							<cache-remove-value key="is-secondary-backend-down-cache-key" />
+						</when>
+                   </choose>
+			  </when>
+			</choose>
+        </retry>
+    </backend>
+<outbound>
+    <base />
+</outbound>
+<on-error>
+   <base />
+</on-error>
+</policies>')]

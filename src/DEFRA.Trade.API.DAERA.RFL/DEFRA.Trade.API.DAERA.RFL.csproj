@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<SonarQubeTestProject>false</SonarQubeTestProject>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<UserSecretsId>e0daefc0-a8b6-4e06-8e41-870962d22dec</UserSecretsId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<NoWarn>1701;1702;CS1591</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<NoWarn>1701;1702;CS1591</NoWarn>
+		<DocumentationFile>obj\Debug\net6.0\DEFRA.Trade.API.DAERA.RFL.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Defra.Trade.Common" Version="4.0.2" />
+		<PackageReference Include="Defra.Trade.ProtectiveMonitoring" Version="3.0.0" />
+		<PackageReference Include="MediatR" Version="12.4.0" />
+		<PackageReference Include="Defra.Trade.Common.Api" Version="3.0.2" GeneratePathProperty="true">
+		<ApiXmlDoc>$(PkgDefra_Trade_Common_Api)\lib\net8.0\Defra.Trade.Common.Api.xml</ApiXmlDoc>
+	  </PackageReference>
+	  <PackageReference Include="Defra.Trade.Common.ExternalApi" Version="3.0.1" />
+	  <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+	</ItemGroup>
+  
+	<ItemGroup>
+	  <ProjectReference Include="..\DEFRA.Trade.API.DAERA.RFL.Logic\DEFRA.Trade.API.DAERA.RFL.Logic.csproj" />
+	  <ProjectReference Include="..\Defra.Trade.Common.Function.Health\Defra.Trade.Common.Function.Health.csproj" />
+	</ItemGroup>
+
+	<Target Name="BuildCopyPackagesXmlDoc" AfterTargets="Build">
+		<ItemGroup>
+			<PackageReferenceFiles Condition="%(PackageReference.ApiXmlDoc) != ''" Include="%(PackageReference.ApiXmlDoc)" />
+		</ItemGroup>
+		<Copy SourceFiles="@(PackageReferenceFiles)" DestinationFolder="$(OutDir)" />
+	</Target>
+	
+	<Target Name="PublishCopyPackagesXmlDoc" AfterTargets="PrepareForPublish">
+		<ItemGroup>
+			<PackageReferenceFiles Condition="%(PackageReference.ApiXmlDoc) != ''" Include="%(PackageReference.ApiXmlDoc)" />
+		</ItemGroup>
+		<Copy SourceFiles="@(PackageReferenceFiles)" DestinationFolder="$(PublishDir)" />
+	</Target>
+
+</Project>

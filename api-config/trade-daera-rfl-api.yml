@@ -1,0 +1,79 @@
+version: 0.0.1
+apimServiceName: "#{{ Environment.Name }}TRA#{{ nc-function-infrastructure }}#{{ nc-resource-apimanagement }}1001"
+apiVersionSets:
+  - id: trade-daera-rfl-api-dev
+    displayName: DAERA Retail Movement Scheme rfl - DEV
+    description: DAERA Retail Movement Scheme rfl API
+    versioningScheme: Segment
+  - id: trade-daera-rfl-api
+    displayName: DAERA Retail Movement Scheme rfl
+    description: DAERA Retail Movement Scheme rfl API
+    versioningScheme: Segment
+apis:
+  - name: trade-daera-rfl-api-v1-dev
+    type: http
+    displayName: DAERA Retail Movement Scheme rfl - DEV
+    description: Share General Certificate data with DAERA.
+    serviceUrl: https://defra.mock
+    openApiSpec: v1\swagger.json
+    policy: policies\apiReadPolicy.xml
+    suffix: daera-rfl/dev
+    subscriptionRequired: false
+    apiVersion: v1
+    apiVersionDescription: Version 1 DAERA Retail Movement Scheme rfl DEV
+    apiVersionSetId: trade-daera-rfl-api-dev
+    products: trd-dev
+    authenticationSettings:
+      oAuth2:
+        authorizationServerId: OAuth-Server
+      subscriptionKeyRequired: false
+    diagnostic:
+      name: applicationinsights
+      alwaysLog: allErrors
+      loggerId: "#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-appinsights }}1001"
+      sampling:
+        samplingType: fixed
+        percentage: 100
+      enableHttpCorrelationHeaders: true
+  - name: trade-daera-rfl-api-v1
+    type: http
+    displayName: DAERA Retail Movement Scheme Rfl Api
+    description: RFL Api to consume message from DAERA.
+    serviceUrl: "https://#{{ Environment.Name }}TRS#{{ nc-function-web }}#{{ nc-resource-webapp }}1060.azurewebsites.net/"
+    openApiSpec: v1\swagger.json
+    policy: policies\apiReadPolicy.xml
+    suffix: daera-rfl
+    subscriptionRequired: false
+    apiVersion: v1
+    apiVersionDescription: Version 1 DAERA Retail Movement Scheme Rfl
+    apiVersionSetId: trade-daera-rfl-api
+    products: trd-prod
+    authenticationSettings:
+      oAuth2:
+        authorizationServerId: OAuth-Server
+      subscriptionKeyRequired: false
+    diagnostic:
+      name: applicationinsights
+      alwaysLog: allErrors
+      loggerId: "#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-appinsights }}1001"
+      sampling:
+        samplingType: fixed
+        percentage: 100
+      enableHttpCorrelationHeaders: true
+    dependsOn: trade-daera-rfl-api-v1-dev
+templateParameters:
+  - name: audience
+    value: "#{{ externalAPIMAudience }}"
+  - name: secondaryServiceUrl
+    value: "https://#{{ Environment.Name }}TRS#{{ nc-function-web }}#{{ nc-resource-webapp }}1260.azurewebsites.net/"
+  - name: aspClientId
+    reference:
+      keyVault:
+        id: "/subscriptions/#{{ subscriptionId }}/resourceGroups/#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-resourcegroup }}1001/providers/Microsoft.KeyVault/vaults/#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-keyvault }}1001"
+      secretName: "TRSWEBAS1003-OAuth-ClientId"
+  - name: roles
+    values:
+      roleTradeDaeraRflRead: "#{{ roleTradeDaeraRflRead }}"
+outputLocation: publish-templates
+linked: false
+baseFileName: trade-daera-rfl-api
