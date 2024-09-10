@@ -53,6 +53,7 @@ extends:
     appProject: TRS
     sqlProject: TRA
     appInstanceNumber:  $(nc-region-id)60
+    scr: GH
     buildProjects: |
       **/*.csproj
     publishProject: '**/*API.Daera.Rfl.csproj'
