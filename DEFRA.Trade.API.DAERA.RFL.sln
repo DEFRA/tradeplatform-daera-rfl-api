@@ -1,0 +1,105 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DEFRA.Trade.API.DAERA.RFL", "src\DEFRA.Trade.API.DAERA.RFL\DEFRA.Trade.API.DAERA.RFL.csproj", "{24EE3AB6-700B-486E-BAA3-3E7F4B6BDBF8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DEFRA.Trade.API.DAERA.RFL.Logic", "src\DEFRA.Trade.API.DAERA.RFL.Logic\DEFRA.Trade.API.DAERA.RFL.Logic.csproj", "{AB277AA6-A4A4-434A-9F59-AD459CA95C91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A0137B74-9942-4283-8E31-61381A6CD381}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pipeline", "pipeline", "{9A71C73C-8A3D-454D-9864-BDB73C80B7A4}"
+	ProjectSection(SolutionItems) = preProject
+		pipeline\build-api.yaml = pipeline\build-api.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api-config", "api-config", "{8055DBA5-4A83-42FB-BAD3-D2508580A43E}"
+	ProjectSection(SolutionItems) = preProject
+		api-config\trade-daera-rfl-api.yml = api-config\trade-daera-rfl-api.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "policies", "policies", "{BADBEE27-5B9C-44D8-90E9-605DC615F30E}"
+	ProjectSection(SolutionItems) = preProject
+		api-config\policies\apiPolicy200MockResponses.xml = api-config\policies\apiPolicy200MockResponses.xml
+		api-config\policies\apiReadPolicy.xml = api-config\policies\apiReadPolicy.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827D854C-BC65-48D4-80D1-E5FE873EA34A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DEFRA.Trade.API.DAERA.RFL.IntegrationTests", "test\DEFRA.Trade.API.DAERA.RFL.IntegrationTests\DEFRA.Trade.API.DAERA.RFL.IntegrationTests.csproj", "{F5B77956-1E7D-40EA-878F-86289F4BFB50}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DEFRA.Trade.API.DAERA.RFL.Logic.Tests", "test\DEFRA.Trade.API.DAERA.RFL.Logic.Tests\DEFRA.Trade.API.DAERA.RFL.Logic.Tests.csproj", "{95022F62-1027-4B6B-A378-6C0D7F01FC79}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DEFRA.Trade.API.DAERA.RFL.Tests.Common", "test\DEFRA.Trade.API.DAERA.RFL.Tests.Common\DEFRA.Trade.API.DAERA.RFL.Tests.Common.csproj", "{F649A365-47BE-4CE6-A7AA-D5F0E24C3DA4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DEFRA.Trade.API.DAERA.RFL.Tests", "test\DEFRA.Trade.API.DAERA.RFL.Tests\DEFRA.Trade.API.DAERA.RFL.Tests.csproj", "{A9F5082D-0ECD-434F-BD01-C0338CCD4183}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Defra.Trade.Common.Function.Health", "src\Defra.Trade.Common.Function.Health\Defra.Trade.Common.Function.Health.csproj", "{8F2A4202-2230-42CB-B1D8-6962A2EA4F95}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Defra.Trade.Common.Function.Health.UnitTests", "test\Defra.Trade.Common.Function.Health\Defra.Trade.Common.Function.Health.UnitTests.csproj", "{FACADE1D-30AE-4B9A-BCBB-9E2171A61A93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{17AEC739-0D49-4A7E-A38D-0CFD7A7E7051}"
+	ProjectSection(SolutionItems) = preProject
+		CONTRIBUTING.md = CONTRIBUTING.md
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24EE3AB6-700B-486E-BAA3-3E7F4B6BDBF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24EE3AB6-700B-486E-BAA3-3E7F4B6BDBF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24EE3AB6-700B-486E-BAA3-3E7F4B6BDBF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24EE3AB6-700B-486E-BAA3-3E7F4B6BDBF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB277AA6-A4A4-434A-9F59-AD459CA95C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB277AA6-A4A4-434A-9F59-AD459CA95C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB277AA6-A4A4-434A-9F59-AD459CA95C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB277AA6-A4A4-434A-9F59-AD459CA95C91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5B77956-1E7D-40EA-878F-86289F4BFB50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B77956-1E7D-40EA-878F-86289F4BFB50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B77956-1E7D-40EA-878F-86289F4BFB50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B77956-1E7D-40EA-878F-86289F4BFB50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95022F62-1027-4B6B-A378-6C0D7F01FC79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95022F62-1027-4B6B-A378-6C0D7F01FC79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95022F62-1027-4B6B-A378-6C0D7F01FC79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95022F62-1027-4B6B-A378-6C0D7F01FC79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F649A365-47BE-4CE6-A7AA-D5F0E24C3DA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F649A365-47BE-4CE6-A7AA-D5F0E24C3DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F649A365-47BE-4CE6-A7AA-D5F0E24C3DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F649A365-47BE-4CE6-A7AA-D5F0E24C3DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9F5082D-0ECD-434F-BD01-C0338CCD4183}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9F5082D-0ECD-434F-BD01-C0338CCD4183}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9F5082D-0ECD-434F-BD01-C0338CCD4183}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9F5082D-0ECD-434F-BD01-C0338CCD4183}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F2A4202-2230-42CB-B1D8-6962A2EA4F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F2A4202-2230-42CB-B1D8-6962A2EA4F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F2A4202-2230-42CB-B1D8-6962A2EA4F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F2A4202-2230-42CB-B1D8-6962A2EA4F95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FACADE1D-30AE-4B9A-BCBB-9E2171A61A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FACADE1D-30AE-4B9A-BCBB-9E2171A61A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FACADE1D-30AE-4B9A-BCBB-9E2171A61A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FACADE1D-30AE-4B9A-BCBB-9E2171A61A93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{24EE3AB6-700B-486E-BAA3-3E7F4B6BDBF8} = {827D854C-BC65-48D4-80D1-E5FE873EA34A}
+		{AB277AA6-A4A4-434A-9F59-AD459CA95C91} = {827D854C-BC65-48D4-80D1-E5FE873EA34A}
+		{BADBEE27-5B9C-44D8-90E9-605DC615F30E} = {8055DBA5-4A83-42FB-BAD3-D2508580A43E}
+		{F5B77956-1E7D-40EA-878F-86289F4BFB50} = {A0137B74-9942-4283-8E31-61381A6CD381}
+		{95022F62-1027-4B6B-A378-6C0D7F01FC79} = {A0137B74-9942-4283-8E31-61381A6CD381}
+		{F649A365-47BE-4CE6-A7AA-D5F0E24C3DA4} = {A0137B74-9942-4283-8E31-61381A6CD381}
+		{A9F5082D-0ECD-434F-BD01-C0338CCD4183} = {A0137B74-9942-4283-8E31-61381A6CD381}
+		{8F2A4202-2230-42CB-B1D8-6962A2EA4F95} = {827D854C-BC65-48D4-80D1-E5FE873EA34A}
+		{FACADE1D-30AE-4B9A-BCBB-9E2171A61A93} = {A0137B74-9942-4283-8E31-61381A6CD381}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C159597D-ABF5-4E8E-A5B9-193863D451AC}
+	EndGlobalSection
+EndGlobal
