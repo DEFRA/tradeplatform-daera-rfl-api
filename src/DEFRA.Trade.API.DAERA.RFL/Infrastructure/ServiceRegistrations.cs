@@ -51,9 +51,6 @@ public static class ServiceRegistrations
             .AddCheck<AppSettingHealthCheck>("DaeraRflApiSettings:DaeraRflApiPathV1")
             .AddAzureServiceBusCheck(configuration, "Queues:EhcoRfl:Update:ConnectionString", EhcoRflUpdateQueueClient.OptionsName);
 
-        services
-            .AddScoped<IMonitorService, MonitorService>();
-
         return services;
     }
 

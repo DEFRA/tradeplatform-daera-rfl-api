@@ -13,7 +13,7 @@ To run this webapp, you will need a `.\src\DEFRA.Trade.API.DAERA.RFL\appsettings
   },
   "DaeraRflApiSettings": {
     "BaseUrl": "<secret>",
-    "DaeraRflApiPathV1": "<secret>""
+    "DaeraRflApiPathV1": "<secret>"
     "TestApiUri": "<secret>"
   },
     "ConfigurationServer": {
