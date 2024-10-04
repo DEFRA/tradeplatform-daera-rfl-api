@@ -17,15 +17,12 @@ public class DaeraRflApplicationFactory<TStartup> : WebApplicationFactory<TStart
 
     public Mock<IQueueClient<RflUpdateRequest>> EhcoRflClient { get; }
 
-    public Mock<IMonitorService> MonitorService { get; set; }
-
     private string ApiVersion { get; set; } = "1";
 
     public DaeraRflApplicationFactory() : base()
     {
         ClientOptions.AllowAutoRedirect = false;
         DateTimeProvider = new();
-        MonitorService = new();
         AuditRepository = new();
         EhcoRflClient = new();
     }
@@ -83,7 +80,6 @@ public class DaeraRflApplicationFactory<TStartup> : WebApplicationFactory<TStart
         {
             services.Replace(ServiceDescriptor.Singleton(DateTimeProvider.Object));
             services.Replace(ServiceDescriptor.Singleton(AuditRepository.Object));
-            services.Replace(ServiceDescriptor.Singleton(MonitorService.Object));
             services.Replace(ServiceDescriptor.Singleton(EhcoRflClient.Object));
         });
     }
