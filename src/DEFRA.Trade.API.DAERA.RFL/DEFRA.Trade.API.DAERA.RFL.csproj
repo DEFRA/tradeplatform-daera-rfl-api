@@ -22,8 +22,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Defra.Trade.Common" Version="4.0.2" />
-		<PackageReference Include="Defra.Trade.ProtectiveMonitoring" Version="3.0.0" />
-		<PackageReference Include="MediatR" Version="12.4.0" />
+		<PackageReference Include="Defra.Trade.ProtectiveMonitoring" Version="3.0.1" />
+		<PackageReference Include="MediatR" Version="12.4.1" />
 		<PackageReference Include="Defra.Trade.Common.Api" Version="3.0.2" GeneratePathProperty="true">
 		<ApiXmlDoc>$(PkgDefra_Trade_Common_Api)\lib\net8.0\Defra.Trade.Common.Api.xml</ApiXmlDoc>
 	  </PackageReference>
