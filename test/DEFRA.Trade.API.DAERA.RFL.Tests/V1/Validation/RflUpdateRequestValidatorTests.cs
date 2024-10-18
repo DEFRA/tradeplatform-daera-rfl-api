@@ -25,15 +25,14 @@ public class RflUpdateRequestValidatorTests
                 new()
                 {
                     ExchangedDocument = new(),
-                    OperatorResponsibleForConsignment = Enumerable.Empty<RflOperatorUpdate>()
+                    OperatorResponsibleForConsignment = []
                 },
-                new ExpectedError[]
-                {
+                [
                     new("ExchangedDocument.Id", "'Id' must not be empty."),
                     new("ExchangedDocument.TypeCode", "'Type Code' must not be empty."),
                     new("ExchangedDocument.IssueDateTime", "'Issue Date Time' must not be empty."),
                     new("ExchangedDocument.Issuer", "'Issuer' must not be empty."),
-                }),
+                ]),
             new(
                 new()
                 {
@@ -49,8 +48,7 @@ public class RflUpdateRequestValidatorTests
                         null
                     }
                 },
-                new ExpectedError[]
-                {
+                [
                     new("ExchangedDocument.Id.Content", "'Content' must not be empty."),
                     new("ExchangedDocument.Id.SchemeId", "'Scheme Id' must not be empty."),
                     new("ExchangedDocument.TypeCode.Content", "'Content' must not be empty."),
@@ -59,7 +57,7 @@ public class RflUpdateRequestValidatorTests
                     new("ExchangedDocument.IssueDateTime.Format", "'Format' must not be empty."),
                     new("ExchangedDocument.Issuer.Name", "'Name' must not be empty."),
                     new("OperatorResponsibleForConsignment[0]", "'Operator Responsible For Consignment' must not be empty."),
-                }),
+                ]),
             new(
                 new()
                 {
@@ -98,8 +96,7 @@ public class RflUpdateRequestValidatorTests
                         new()
                     }
                 },
-                new ExpectedError[]
-                {
+                [
                     new("ExchangedDocument.Id.SchemeId", "'Scheme Id' must be equal to 'DAERA.CHIP.RFL.MessageId'."),
                     new("ExchangedDocument.TypeCode.Content", "'Content' must be equal to '1004'."),
                     new("ExchangedDocument.TypeCode.ListAgencyId", "'List Agency Id' must be equal to '6'."),
@@ -111,7 +108,7 @@ public class RflUpdateRequestValidatorTests
                     new("OperatorResponsibleForConsignment[0].Id", "'Id' must not be empty."),
                     new("OperatorResponsibleForConsignment[0].Name", "'Name' must not be empty."),
                     new("OperatorResponsibleForConsignment[0].PostalAddress", "'Postal Address' must not be empty."),
-                }),
+                ]),
             new(
                 new()
                 {
@@ -168,8 +165,7 @@ public class RflUpdateRequestValidatorTests
                         }
                     }
                 },
-                new ExpectedError[]
-                {
+                [
                     new("ExchangedDocument.Issuer.Id.SchemeId", "'Scheme Id' must be equal to one of 'CA', 'Defra.Customer', 'FBO', 'RMS'."),
                     new("ExchangedDocument.Issuer.Name.LanguageId", "'Language Id' must be equal to one of 'en', 'EN'."),
                     new("ExchangedDocument.Issuer.RoleCode.Content", "'Content' must be equal to one of 'ZA', 'AG', 'AM', 'DGP', 'FZ', 'GA', 'WS'."),
@@ -181,7 +177,7 @@ public class RflUpdateRequestValidatorTests
                     new("OperatorResponsibleForConsignment[0].PostalAddress.LineOne", "'Line One' must not be empty."),
                     new("OperatorResponsibleForConsignment[0].PostalAddress.CityName", "'City Name' must not be empty."),
                     new("OperatorResponsibleForConsignment[0].PostalAddress.CountryCode", "'Country Code' must not be empty.")
-                }),
+                ]),
             new(
                 new()
                 {
@@ -264,8 +260,7 @@ public class RflUpdateRequestValidatorTests
                         }
                     }
                 },
-                new ExpectedError[]
-                {
+                [
                     new("OperatorResponsibleForConsignment[0].Name.LanguageId", "'Language Id' must be equal to one of 'en', 'EN'."),
                     new("OperatorResponsibleForConsignment[0].ClassificationCode.Content", "'Content' must be equal to 'C'."),
                     new("OperatorResponsibleForConsignment[0].PostalAddress.Postcode.Content", "'Content' must not be empty."),
@@ -281,7 +276,7 @@ public class RflUpdateRequestValidatorTests
                     new("OperatorResponsibleForConsignment[0].PostalAddress.CountrySubDivisionName.Content", "'Content' must not be empty."),
                     new("OperatorResponsibleForConsignment[0].PostalAddress.TypeCode.Content", "'Content' must not be empty."),
                     new("OperatorResponsibleForConsignment[0].PostalAddress.TypeCode.ListAgencyId", "'List Agency Id' must not be empty.")
-                }),
+                ]),
             new(
                 new()
                 {
@@ -413,15 +408,14 @@ public class RflUpdateRequestValidatorTests
                         }
                     }
                 },
-                new ExpectedError[]
-                {
+                [
                     new("OperatorResponsibleForConsignment[0].PostalAddress.CountryCode.Content", "'Content' must be equal to one of 'AD', 'AE', 'AF', 'AG', 'AI', 'AL', 'AM', 'AO', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AW', 'AX', 'AZ', 'BA', 'BB', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BL', 'BM', 'BN', 'BO', 'BQ', 'BR', 'BS', 'BT', 'BV', 'BW', 'BY', 'BZ', 'CA', 'CC', 'CD', 'CF', 'CG', 'CH', 'CI', 'CK', 'CL', 'CM', 'CN', 'CO', 'CR', 'CU', 'CV', 'CW', 'CX', 'CY', 'CZ', 'DE', 'DJ', 'DK', 'DM', 'DO', 'DZ', 'EC', 'EE', 'EG', 'EH', 'ER', 'ES', 'ET', 'FI', 'FJ', 'FK', 'FM', 'FO', 'FR', 'GA', 'GB', 'GD', 'GE', 'GF', 'GG', 'GH', 'GI', 'GL', 'GM', 'GN', 'GP', 'GQ', 'GR', 'GS', 'GT', 'GU', 'GW', 'GY', 'HK', 'HM', 'HN', 'HR', 'HT', 'HU', 'ID', 'IE', 'IL', 'IM', 'IN', 'IO', 'IQ', 'IR', 'IS', 'IT', 'JE', 'JM', 'JO', 'JP', 'KE', 'KG', 'KH', 'KI', 'KM', 'KN', 'KP', 'KR', 'KW', 'KY', 'KZ', 'LA', 'LB', 'LC', 'LI', 'LK', 'LR', 'LS', 'LT', 'LU', 'LV', 'LY', 'MA', 'MC', 'MD', 'ME', 'MF', 'MG', 'MH', 'MK', 'ML', 'MM', 'MN', 'MO', 'MP', 'MQ', 'MR', 'MS', 'MT', 'MU', 'MV', 'MW', 'MX', 'MY', 'MZ', 'NA', 'NC', 'NE', 'NF', 'NG', 'NI', 'NL', 'NO', 'NP', 'NR', 'NU', 'NZ', 'OM', 'PA', 'PE', 'PF', 'PG', 'PH', 'PK', 'PL', 'PM', 'PN', 'PR', 'PS', 'PT', 'PW', 'PY', 'QA', 'RE', 'RO', 'RS', 'RU', 'RW', 'SA', 'SB', 'SC', 'SD', 'SE', 'SG', 'SH', 'SI', 'SJ', 'SK', 'SL', 'SM', 'SN', 'SO', 'SR', 'SS', 'ST', 'SV', 'SX', 'SY', 'SZ', 'TC', 'TD', 'TF', 'TG', 'TH', 'TJ', 'TK', 'TL', 'TM', 'TN', 'TO', 'TR', 'TT', 'TV', 'TW', 'TZ', 'UA', 'UG', 'UM', 'US', 'UY', 'UZ', 'VA', 'VC', 'VE', 'VG', 'VI', 'VN', 'VU', 'WF', 'WS', 'YE', 'YT', 'ZA', 'ZM', 'ZW', 'XI'."),
                     new("OperatorResponsibleForConsignment[0].PostalAddress.CountryName.LanguageId", "'Language Id' must be equal to one of 'en', 'EN'."),
                     new("OperatorResponsibleForConsignment[0].PostalAddress.CountrySubDivisionCode.SchemeAgencyId", "'Scheme Agency Id' must be equal to '5'."),
                     new("OperatorResponsibleForConsignment[0].PostalAddress.CountrySubDivisionName.LanguageId", "'Language Id' must be equal to one of 'en', 'EN'."),
                     new("OperatorResponsibleForConsignment[0].PostalAddress.TypeCode.Content", "'Content' must be equal to one of '1', '2', '3', '4', '5', '6', '7', '8'."),
                     new("OperatorResponsibleForConsignment[0].PostalAddress.TypeCode.ListAgencyId", "'List Agency Id' must be equal to '6'.")
-                }),
+                ]),
             new(
                 new()
                 {
@@ -521,7 +515,7 @@ public class RflUpdateRequestValidatorTests
                         }
                     }
                 },
-                Array.Empty<ExpectedError>())
+                [])
         ];
     }
 

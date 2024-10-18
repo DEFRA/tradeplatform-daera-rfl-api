@@ -6,6 +6,7 @@ using Defra.Trade.Common.ExternalApi.ApimIdentity;
 using Defra.Trade.Common.ExternalApi.Auditing;
 using Defra.Trade.Common.Sql.Infrastructure;
 using DEFRA.Trade.API.DAERA.RFL.Infrastructure;
+using DEFRA.Trade.API.DAERA.RFL.Logic.Extensions;
 
 namespace DEFRA.Trade.API.DAERA.RFL;
 
@@ -28,8 +29,7 @@ public class Startup(IConfiguration configuration)
     /// <param name="logger">Application logger</param>
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
     {
-        logger.LogInformation(
-            "Starting {EnvironmentName} {ApplicationName} from {ContentRootPath}",
+        logger.LogStartup(
             env.EnvironmentName,
             env.ApplicationName,
             env.ContentRootPath);

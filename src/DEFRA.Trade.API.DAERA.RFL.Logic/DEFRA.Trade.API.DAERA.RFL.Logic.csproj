@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.18.1" />
+    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.18.2" />
     <PackageReference Include="Defra.Trade.Common.Audit" Version="3.0.0" />
     <PackageReference Include="Defra.Trade.ProtectiveMonitoring" Version="3.0.1" />
   </ItemGroup>
