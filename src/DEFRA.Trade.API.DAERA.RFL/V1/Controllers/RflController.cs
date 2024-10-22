@@ -24,6 +24,7 @@ public class RflController(
 {
     private readonly ILogger<RflController> _logger = logger;
 
+
     /// <summary>
     /// Updates the list of responsible for load operators
     /// </summary>
@@ -44,4 +45,5 @@ public class RflController(
 
         return NoContent();
     }
+
 }
