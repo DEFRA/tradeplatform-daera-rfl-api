@@ -1,6 +1,6 @@
 # Setup
 
-To run this function, you will need a `.\src\DEFRA.Trade.API.DAERA.RFL\appsettings.Development.json` file. The file will need the following structure:
+To run this webapp, you will need a `.\src\DEFRA.Trade.API.DAERA.RFL\appsettings.Development.json` file. The file will need the following structure:
 
 ```jsonc 
 {
@@ -13,7 +13,7 @@ To run this function, you will need a `.\src\DEFRA.Trade.API.DAERA.RFL\appsettin
   },
   "DaeraRflApiSettings": {
     "BaseUrl": "<secret>",
-    "DaeraRflApiPathV1": "<secret>""
+    "DaeraRflApiPathV1": "<secret>"
     "TestApiUri": "<secret>"
   },
     "ConfigurationServer": {

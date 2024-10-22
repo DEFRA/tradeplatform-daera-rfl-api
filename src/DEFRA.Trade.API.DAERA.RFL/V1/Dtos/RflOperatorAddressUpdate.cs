@@ -44,7 +44,7 @@ public sealed class RflOperatorAddressUpdate
     public TextType LineFour { get; set; }
 
     /// <summary>
-    /// The first line of the addresss
+    /// The first line of the address
     /// </summary>
     public TextType LineOne { get; set; }
 
